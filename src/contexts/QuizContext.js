@@ -100,7 +100,7 @@ function QuizProvider({ children }) {
   );
 
   useEffect(function () {
-    fetch('http://localhost:8000/questions')
+    fetch(`${process.env.REACT_APP_API_ROUTE}/api/questions`)
       .then((res) => res.json())
       .then((data) =>
         dispatch({ type: 'dataReceived', payload: data })
@@ -118,9 +118,9 @@ function QuizProvider({ children }) {
         points,
         highscore,
         secondsRemaining,
-        dispatch,
         numQuestions,
         totalPoints,
+        dispatch,
       }}
     >
       {children}
